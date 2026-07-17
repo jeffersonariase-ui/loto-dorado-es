@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loto Dorado - Reserva</title>
   <style>
-    /* VARIABLES Y RESET */
+    /* VARIABLES Y ESTILOS GLOBALES */
     :root {
       --primary-color: #2b2b2b;
       --accent-color: #d1c2b4;
@@ -30,7 +30,7 @@
       line-height: 1.6;
     }
 
-    /* HEADER / NAVEGACIÓN (Fijo) */
+    /* HEADER / NAVEGACIÓN */
     header {
       position: fixed;
       top: 0;
@@ -62,6 +62,7 @@
     .brand img {
       height: 40px;
       width: auto;
+      object-fit: contain;
     }
 
     .brand span {
@@ -105,96 +106,165 @@
       border-radius: 2px;
     }
 
-    /* CONTENEDOR DE RESERVA */
-    .reserva-container {
-      max-width: 700px;
-      margin: 140px auto 80px;
-      padding: 40px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    /* PORTADA / HERO BANNER (RESERVA) */
+    .hero-reserva {
+      position: relative;
+      height: 350px;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('portada-reserva.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin-top: 70px;
     }
 
-    .reserva-header {
+    .hero-reserva h1 {
+      color: var(--text-color);
+      font-size: 48px;
+      font-weight: 300;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    main {
+      max-width: 900px;
+      margin: 60px auto 80px;
+      padding: 0 20px;
+    }
+
+    /* SECCIÓN PRINCIPAL DE CONTENIDO (ESTILO GOOGLE SITES) */
+    .contenido-reserva {
+      background-color: #ffffff;
+      padding: 50px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      margin-bottom: 50px;
+    }
+
+    .titulo-bienestar {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      font-weight: normal;
+      color: #4a3e3d;
+      margin-bottom: 25px;
       text-align: center;
+    }
+
+    .intro-texto {
+      font-size: 16px;
+      color: #444444;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .subtitulo-seccion {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-weight: normal;
+      color: #4a3e3d;
+      margin-top: 35px;
+      margin-bottom: 15px;
+    }
+
+    /* Estilo exacto de la lista de Sesiones y Valores */
+    .lista-valores {
+      list-style-type: square;
+      padding-left: 20px;
+      margin-bottom: 35px;
+    }
+
+    .lista-valores li {
+      font-size: 16px;
+      color: #333333;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    /* MÉTODO DE PAGO */
+    .metodo-pago-container {
+      margin-top: 35px;
       margin-bottom: 40px;
     }
 
-    .reserva-header h1 {
-      font-size: 32px;
+    .pago-img {
+      max-width: 280px;
+      height: auto;
+      display: block;
+      margin-top: 15px;
+    }
+
+    /* IFRAME DE LA APP WEB DE RESERVAS */
+    .iframe-reserva-container {
+      margin-top: 50px;
+      border-top: 1px solid rgba(209, 194, 180, 0.3);
+      padding-top: 40px;
+    }
+
+    .iframe-reserva-container h3 {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      font-weight: normal;
+      color: #4a3e3d;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .booking-iframe {
+      width: 100%;
+      height: 750px;
+      border: 1px solid rgba(209, 194, 180, 0.4);
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.02);
+    }
+
+    /* SECCIÓN: NOTAS DE TU RESERVA */
+    .notas-section {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      border-top: 4px solid var(--accent-color);
+    }
+
+    .notas-section h2 {
+      font-size: 22px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
+      color: var(--primary-color);
     }
 
-    .reserva-header p {
-      color: #666;
-      font-size: 16px;
-    }
-
-    /* FORMULARIO */
-    .form-group {
-      margin-bottom: 25px;
-    }
-
-    .form-row {
+    .notas-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
 
-    label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
+    .nota-item {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nota-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .nota-content h4 {
+      font-size: 15px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 8px;
       color: var(--primary-color);
+      margin-bottom: 6px;
     }
 
-    input, select, textarea {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 15px;
-      background-color: #fafafa;
-      color: var(--primary-color);
-      font-family: var(--font-family);
-      transition: border-color 0.3s, background-color 0.3s;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent-color);
-      background-color: #ffffff;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .btn-submit {
-      width: 100%;
-      padding: 15px;
-      background-color: var(--primary-color);
-      color: var(--text-color);
-      border: none;
-      border-radius: 4px;
-      font-size: 15px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-    }
-
-    .btn-submit:hover {
-      background-color: #404040;
-      transform: translateY(-1px);
+    .nota-content p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
     }
 
     /* FOOTER */
@@ -293,14 +363,28 @@
         display: flex;
       }
 
-      .reserva-container {
-        margin: 110px 20px 60px;
-        padding: 25px;
+      .hero-reserva {
+        height: 250px;
       }
 
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
+      .hero-reserva h1 {
+        font-size: 36px;
+      }
+
+      .contenido-reserva {
+        padding: 30px 20px;
+      }
+
+      .titulo-bienestar {
+        font-size: 30px;
+      }
+
+      .booking-iframe {
+        height: 650px; /* Un poco más compacto en móviles */
+      }
+
+      .notas-section {
+        padding: 25px;
       }
     }
   </style>
@@ -310,7 +394,7 @@
   <!-- Header / Barra de Navegación -->
   <header>
     <div class="nav-container">
-      <a href="inicio.html" class="brand">
+      <a href="index.html" class="brand">
         <img src="LOTO DORADO.png" alt="Loto Dorado Logo">
         <span>Loto Dorado</span>
       </a>
@@ -323,7 +407,7 @@
 
       <nav>
         <ul id="nav-list">
-          <li><a href="inicio.html">Inicio</a></li>
+          <li><a href="index.html">Inicio</a></li>
           <li><a href="servicios.html">Servicios</a></li>
           <li><a href="#" class="active">Reserva</a></li>
           <li><a href="sobre-mi.html">Sobre Mí</a></li>
@@ -332,69 +416,113 @@
     </div>
   </header>
 
-  <!-- Contenedor del Formulario de Reserva -->
-  <main class="reserva-container">
-    <div class="reserva-header">
-      <h1>Agenda tu Cita</h1>
-      <p>Disfruta de una experiencia terapéutica profesional en la comodidad de tu hogar.</p>
-    </div>
+  <!-- Portada con Imagen detrás (Hero) -->
+  <section class="hero-reserva">
+    <h1>Reserva</h1>
+  </section>
 
-    <form id="reserva-form" action="https://formspree.io/f/tu_id_de_formulario" method="POST">
-      <!-- Nombre Completo -->
-      <div class="form-group">
-        <label for="nombre">Nombre Completo</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+  <!-- Contenido Principal -->
+  <main>
+    
+    <!-- BLOQUE PRINCIPAL DE LA RESERVA -->
+    <section class="contenido-reserva">
+      <h2 class="titulo-bienestar">Elige tu camino al bienestar</h2>
+      
+      <p class="intro-texto">
+        Cada sesión es un ritual integral diseñado para tu restauración física y mental. Para tu total comodidad, mi servicio incluye camilla profesional, aromaterapia y tecnología de relajación profunda (terapia de percusión y vibración suave).
+      </p>
+
+      <h3 class="subtitulo-seccion">Sesiones y Valores</h3>
+      
+      <ul class="lista-valores">
+        <li><strong>1 hora</strong> – Enfoque y alivio rápido: $100</li>
+        <li><strong>1 hora y 30 minutos</strong>  – Equilibrio y calma profunda: $150</li>
+        <li><strong>2 horas</strong> – Inmersión total y renovación: $200</li>
+        <li><strong>Hasta 6 horas</strong> – Experiencia compartida o corporales extendidos (perfecto para parejas o grupos en el mismo domicilio)</li>
+      </ul>
+
+      <div class="metodo-pago-container">
+        <h3 class="subtitulo-seccion">Método de pago</h3>
+        <!-- Ruta de la imagen de Cash y Zelle -->
+        <img src="metodo-pago.png" alt="Cash y Zelle" class="pago-img">
       </div>
 
-      <!-- Fila de Contacto: Teléfono y Correo -->
-      <div class="form-row">
-        <div class="form-group">
-          <label for="telefono">Teléfono / WhatsApp</label>
-          <input type="tel" id="telefono" name="telefono" placeholder="Ej. +1 510 000 0000" required>
+      <!-- SECCIÓN DEL IFRAME (APP WEB DE GOOGLE APPS SCRIPT) -->
+      <div class="iframe-reserva-container">
+        <h3>Completa tu Reserva</h3>
+        <iframe 
+          src="https://script.google.com/macros/s/AKfycbzNTOJSebSXdxKDpgAE-yN_LAiPtU3TFjCamfffWg_iSeG8GS1bHFV4c0ugoT14FGP4/exec" 
+          class="booking-iframe" 
+          allow="geolocation">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: NOTAS DE TU RESERVA -->
+    <section class="notas-section">
+      <h2>📌 Notas de tu Reserva</h2>
+      
+      <div class="notas-grid">
+        
+        <div class="nota-item">
+          <div class="nota-icon">📍</div>
+          <div class="nota-content">
+            <h4>Cobertura</h4>
+            <p>Exclusivamente ciudades de Silicon Valley.</p>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">Correo Electrónico</label>
-          <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+
+        <div class="nota-item">
+          <div class="nota-icon">⏰</div>
+          <div class="nota-content">
+            <h4>Horario</h4>
+            <p>Lunes a Viernes (8:00 AM – 8:00 PM).</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Selección del Servicio -->
-      <div class="form-group">
-        <label for="servicio">Selecciona un Servicio</label>
-        <select id="servicio" name="servicio" required>
-          <option value="" disabled selected>Selecciona una opción...</option>
-          <option value="Relajación y Bienestar">Relajación y Bienestar</option>
-          <option value="Terapias Estructurales y de Alivio">Terapias Estructurales y de Alivio</option>
-          <option value="Terapias Especializadas y Energéticas">Terapias Especializadas y Energéticas</option>
-        </select>
-      </div>
-
-      <!-- Fila de Fecha y Hora -->
-      <div class="form-row">
-        <div class="form-group">
-          <label for="fecha">Fecha Preferida</label>
-          <input type="date" id="fecha" name="fecha" required>
+        <div class="nota-item">
+          <div class="nota-icon">📅</div>
+          <div class="nota-content">
+            <h4>Agenda</h4>
+            <p>Máximo 2 semanas de antelación; mínimo 2 horas antes del servicio.</p>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="hora">Hora de la Cita</label>
-          <input type="time" id="hora" name="hora" required>
+
+        <div class="nota-item">
+          <div class="nota-icon">💳</div>
+          <div class="nota-content">
+            <h4>Pagos</h4>
+            <p>Solo Cash o Zelle (al recibir el servicio).</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Dirección a Domicilio -->
-      <div class="form-group">
-        <label for="direccion">Dirección del Servicio (Domicilio)</label>
-        <input type="text" id="direccion" name="direccion" placeholder="Calle, número, apartamento/casa, ciudad" required>
-      </div>
+        <div class="nota-item">
+          <div class="nota-icon">🚫</div>
+          <div class="nota-content">
+            <h4>Cancelaciones</h4>
+            <p>Únicamente con más de 1 hora y 40 min de anticipación usando tu número de reserva, usar pestaña Cancelar Reserva.</p>
+          </div>
+        </div>
 
-      <!-- Detalles o Notas Adicionales -->
-      <div class="form-group">
-        <label for="mensaje">Notas adicionales / Peticiones especiales</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Indícanos si tienes alguna lesión, dolor específico o preferencia sobre la sesión..."></textarea>
-      </div>
+        <div class="nota-item">
+          <div class="nota-icon">📧</div>
+          <div class="nota-content">
+            <h4>Confirmación</h4>
+            <p>Si incluyes tu correo, recibirás los detalles y el número de reserva. Si no, asegúrate de anotar/guardar los datos que aparecerán en pantalla al finalizar.</p>
+          </div>
+        </div>
 
-      <button type="submit" class="btn-submit">Enviar Solicitud de Reserva</button>
-    </form>
+        <div class="nota-item">
+          <div class="nota-icon">🏠</div>
+          <div class="nota-content">
+            <h4>Preparación</h4>
+            <p>Ten listo un espacio despejado para la camilla y comunícanos cualquier condición médica en el formulario.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -428,7 +556,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPT PARA INTERACTIVIDAD MÓVIL (MENÚ DESPLEGABLE) -->
+  <!-- Lógica de navegación móvil -->
   <script>
     const mobileMenu = document.getElementById('mobile-menu');
     const navList = document.getElementById('nav-list');
