@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loto Dorado - Servicios</title>
+  <style>
+    /* VARIABLES Y ESTILOS GLOBALES */
+    :root {
+      --primary-color: #2b2b2b;
+      --accent-color: #d1c2b4;
+      --accent-hover: #c2b1a1;
+      --bg-light: #faf8f5;
+      --bg-dark: #1f1f1f;
+      --text-color: #ffffff;
+      --text-muted: #a6a6a6;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-light);
+      color: var(--primary-color);
+      line-height: 1.6;
+    }
+
+    /* HEADER / NAVEGACIÓN */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(43, 43, 43, 0.95);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    .brand img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand span {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 15px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+      color: var(--accent-color);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-color);
+      border-radius: 2px;
+    }
+
+    /* PORTADA / HERO BANNER */
+    .hero-servicios {
+      position: relative;
+      height: 350px;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('portada-servicios.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .hero-servicios h1 {
+      color: var(--text-color);
+      font-size: 48px;
+      font-weight: 300;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    main {
+      max-width: 1000px;
+      margin: 60px auto 80px;
+      padding: 0 20px;
+    }
+
+    .seccion-servicios {
+      background-color: #ffffff;
+      padding: 50px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      margin-bottom: 50px;
+    }
+
+    .titulo-seccion {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      font-weight: normal;
+      color: #4a3e3d;
+      margin: 0 0 25px;
+      text-align: center;
+    }
+
+    .intro-texto {
+      font-size: 16px;
+      color: #444444;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      text-align: justify;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      color: #4a3e3d;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      min-height: 60px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #4a3d35;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: var(--accent-color);
+      color: #2b2b2b;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--bg-dark);
+      color: var(--text-color);
+      padding: 60px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .footer-contact h4 {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    .footer-contact p {
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    .footer-contact a {
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-contact a:hover {
+      color: var(--accent-color);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .social-btn:hover {
+      background-color: var(--accent-color);
+      color: #2b2b2b;
+      transform: scale(1.1);
+    }
+
+    .social-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(43, 43, 43, 0.98);
+        padding: 20px;
+      }
+      nav ul.active { display: flex; }
+      .hero-servicios { height: 250px; }
+      .hero-servicios h1 { font-size: 36px; }
+      .seccion-servicios { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <img src="LOTO DORADO.png" alt="Loto Dorado Logo">
+        <span>Loto Dorado</span>
+      </a>
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span><span></span><span></span>
+      </div>
+      <nav>
+        <ul id="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#" class="active">Servicios</a></li>
+          <li><a href="reserva.html">Reserva</a></li>
+          <li><a href="sobre-mi.html">Sobre Mí</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-servicios">
+    <h1>Servicios</h1>
+  </section>
+
+  <main>
+    <section class="seccion-servicios">
+      <h2 class="titulo-seccion">Relajación y Bienestar</h2>
+      <p class="intro-texto">Diseñada para silenciar el ruido mental y liberar el estrés acumulado. El objetivo es inducir un estado de calma profunda, permitiendo que el sistema nervioso se regule.</p>
+      <div class="grid">
+        <div class="card"><img src="sueco.gif" alt="Sueco"><h3>Masaje sueco</h3><p>Movimientos largos y fluidos que mejoran la circulación y relajan los músculos.</p><a href="reserva.html" class="btn">Reservar</a></div>
+        <div class="card"><img src="shiatsu.gif" alt="Shiatsu"><h3>Masaje shiatsu</h3><p>Presiones rítmicas que equilibran el flujo energético y liberan tensiones.</p><a href="reserva.html" class="btn">Reservar</a></div>
+        <div class="card"><img src="exfoliacion.gif" alt="Exfoliación"><h3>Exfoliación</h3><p>Renovación cutánea que elimina células muertas, dejando la piel radiante.</p><a href="reserva.html" class="btn">Reservar</a></div>
+      </div>
+    </section>
+
+    <section class="seccion-servicios">
+      <h2 class="titulo-seccion">Terapias Estructurales</h2>
+      <p class="intro-texto">Enfocadas en restablecer el equilibrio funcional, trabajando sobre capas profundas para corregir posturas y mejorar la movilidad.</p>
+      <div class="grid">
+        <div class="card"><img src="ajuste.gif" alt="Ajuste"><h3>Ajuste corporal</h3><p>Técnicas para realinear la postura y mejorar la simetría del cuerpo.</p><a href="reserva.html" class="btn">Reservar</a></div>
+        <div class="card"><img src="miofascial.gif" alt="Miofascial"><h3>Terapia miofascial</h3><p>Liberación del tejido conectivo para eliminar restricciones de movimiento.</p><a href="reserva.html" class="btn">Reservar</a></div>
+        <div class="card"><img src="tailandes.gif" alt="Tailandés"><h3>Masaje tailandés</h3><p>Estiramientos asistidos y presiones profundas que desbloquean articulaciones.</p><a href="reserva.html" class="btn">Reservar</a></div>
+      </div>
+    </section>
+
+    <section class="seccion-servicios">
+      <h2 class="titulo-seccion">Terapias Energéticas</h2>
+      <p class="intro-texto">Trabajo sutil sobre puntos reflejos y flujos vitales para estimular la autocuración del organismo.</p>
+      <div class="grid">
+        <div class="card"><img src="pies.gif" alt="Pies"><h3>Reflexología Pies</h3><p>Estimulación de puntos reflejos en pies para aliviar órganos y sistemas.</p><a href="reserva.html" class="btn">Reservar</a></div>
+        <div class="card"><img src="manos.gif" alt="Manos"><h3>Reflexología Manos</h3><p>Presión en zonas reflejas de manos conectadas a centros de energía.</p><a href="reserva.html" class="btn">Reservar</a></div>
+        <div class="card"><img src="energetico.gif" alt="Energético"><h3>Trabajo Energético</h3><p>Técnicas suaves para desbloquear centros de energía y armonizar el ánimo.</p><a href="reserva.html" class="btn">Reservar</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-contact">
+        <h4>Para más información contáctanos al:</h4>
+        <p><a href="tel:+15106267229">+1 510 626 7229</a> o escríbenos a <a href="mailto:ellotodorado1@gmail.com">ellotodorado1@gmail.com</a></p>
+      </div>
+      <div class="social-icons">
+        <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" class="social-btn" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.277-1.012 4.872 4.872 0 0 1-1.455-2.52 4.793 4.793 0 0 1-.1-1.155h-4v14c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3a3.008 3.008 0 0 1 1.585.454l.015-4.103a7 7 0 0 0-4.6 1.65A7 7 0 1 0 15.002 12V6.68a8.887 8.887 0 0 0 4.587 1.25V4.004a4.832 4.832 0 0 1-.001 2.682z"/></svg></a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Loto Dorado. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+    mobileMenu.addEventListener('click', () => { navList.classList.toggle('active'); });
+  </script>
+</body>
+</html>
