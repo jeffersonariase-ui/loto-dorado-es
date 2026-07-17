@@ -133,7 +133,6 @@
       padding: 0 20px;
     }
 
-    /* SECCIÓN PRINCIPAL DE CONTENIDO (ESTILO GOOGLE SITES) */
     .contenido-reserva {
       background-color: #ffffff;
       padding: 50px;
@@ -167,7 +166,6 @@
       margin-bottom: 15px;
     }
 
-    /* Estilo exacto de la lista de Sesiones y Valores */
     .lista-valores {
       list-style-type: square;
       padding-left: 20px;
@@ -181,7 +179,6 @@
       line-height: 1.6;
     }
 
-    /* MÉTODO DE PAGO */
     .metodo-pago-container {
       margin-top: 35px;
       margin-bottom: 40px;
@@ -212,11 +209,12 @@
 
     .booking-iframe {
       width: 100%;
-      height: 750px;
+      height: 900px; /* Altura fija grande para eliminar scroll interno[cite: 1] */
       border: 1px solid rgba(209, 194, 180, 0.4);
       border-radius: 8px;
       background-color: #ffffff;
       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.02);
+      overflow: hidden;
     }
 
     /* SECCIÓN: NOTAS DE TU RESERVA */
@@ -379,10 +377,6 @@
         font-size: 30px;
       }
 
-      .booking-iframe {
-        height: 650px; /* Un poco más compacto en móviles */
-      }
-
       .notas-section {
         padding: 25px;
       }
@@ -443,7 +437,6 @@
 
       <div class="metodo-pago-container">
         <h3 class="subtitulo-seccion">Método de pago</h3>
-        <!-- Ruta de la imagen de Cash y Zelle -->
         <img src="metodo-pago.png" alt="Cash y Zelle" class="pago-img">
       </div>
 
@@ -463,7 +456,6 @@
       <h2>📌 Notas de tu Reserva</h2>
       
       <div class="notas-grid">
-        
         <div class="nota-item">
           <div class="nota-icon">📍</div>
           <div class="nota-content">
@@ -471,7 +463,6 @@
             <p>Exclusivamente ciudades de Silicon Valley.</p>
           </div>
         </div>
-
         <div class="nota-item">
           <div class="nota-icon">⏰</div>
           <div class="nota-content">
@@ -479,7 +470,6 @@
             <p>Lunes a Viernes (8:00 AM – 8:00 PM).</p>
           </div>
         </div>
-
         <div class="nota-item">
           <div class="nota-icon">📅</div>
           <div class="nota-content">
@@ -487,7 +477,6 @@
             <p>Máximo 2 semanas de antelación; mínimo 2 horas antes del servicio.</p>
           </div>
         </div>
-
         <div class="nota-item">
           <div class="nota-icon">💳</div>
           <div class="nota-content">
@@ -495,7 +484,6 @@
             <p>Solo Cash o Zelle (al recibir el servicio).</p>
           </div>
         </div>
-
         <div class="nota-item">
           <div class="nota-icon">🚫</div>
           <div class="nota-content">
@@ -503,7 +491,6 @@
             <p>Únicamente con más de 1 hora y 40 min de anticipación usando tu número de reserva, usar pestaña Cancelar Reserva.</p>
           </div>
         </div>
-
         <div class="nota-item">
           <div class="nota-icon">📧</div>
           <div class="nota-content">
@@ -511,7 +498,6 @@
             <p>Si incluyes tu correo, recibirás los detalles y el número de reserva. Si no, asegúrate de anotar/guardar los datos que aparecerán en pantalla al finalizar.</p>
           </div>
         </div>
-
         <div class="nota-item">
           <div class="nota-icon">🏠</div>
           <div class="nota-content">
@@ -519,7 +505,6 @@
             <p>Ten listo un espacio despejado para la camilla y comunícanos cualquier condición médica en el formulario.</p>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -532,7 +517,6 @@
         <h4>Para más información contáctanos al:</h4>
         <p><a href="tel:+15106267229">+1 510 626 7229</a> o escríbenos a <a href="mailto:ellotodorado1@gmail.com">ellotodorado1@gmail.com</a></p>
       </div>
-
       <div class="social-icons">
         <a href="https://www.facebook.com/people/Loto-Dorado/61591663160509/?locale=es_LA" target="_blank" class="social-btn" aria-label="Facebook">
           <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
@@ -549,22 +533,18 @@
           <svg viewBox="0 0 24 24"><path d="M23.498 6.163c-.272-1.016-1.071-1.815-2.087-2.087-1.842-.498-9.231-.498-9.231-.498s-7.389 0-9.231.498c-1.016.272-1.815 1.071-2.087 2.087-.498 1.842-.498 5.68-.498 5.68s0 3.838.498 5.68c.272 1.016 1.071 1.815 2.087 2.087 1.842.498 9.231.498 9.231.498s7.389 0 9.231-.498c1.016-.272 1.815-1.071 2.087-2.087.498-1.842.498-5.68.498-5.68s0-3.838-.498-5.68zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         </a>
       </div>
-
       <div class="footer-copy">
         &copy; 2026 Loto Dorado. Todos los derechos reservados.
       </div>
     </div>
   </footer>
 
-  <!-- Lógica de navegación móvil -->
   <script>
     const mobileMenu = document.getElementById('mobile-menu');
     const navList = document.getElementById('nav-list');
-
     mobileMenu.addEventListener('click', () => {
       navList.classList.toggle('active');
     });
   </script>
-
 </body>
 </html>
